@@ -1,2 +1,3 @@
 # EBCDIC.js
+
 EBCDIC parser

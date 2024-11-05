@@ -1,0 +1,11 @@
+{
+  "name": "@askua/ebcdic",
+  "version": "1.0.0-rc1",
+  "exports": "./mod.ts",
+  "tasks": {
+    "check": "deno fmt && deno test && deno lint && deno bench && deno publish --dry-run"
+  },
+  "imports": {
+    "@std/assert": "jsr:@std/assert@1"
+  }
+}
