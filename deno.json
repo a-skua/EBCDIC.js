@@ -1,6 +1,6 @@
 {
   "name": "@askua/ebcdic",
-  "version": "1.0.0-rc1",
+  "version": "1.0.0-rc2",
   "exports": "./mod.ts",
   "tasks": {
     "check": "deno fmt && deno test && deno lint && deno bench && deno publish --dry-run"

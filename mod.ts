@@ -96,10 +96,22 @@ const b2c37 = new Map<EBCDIC_CCSID_37_BYTE, EBCDIC_CCSID_37_CHAR>(
 export interface EBCDIC_CCSID_37_FUNCTION_RETURN {
   /**
    * Alias of `as EBCDIC_CCSID_37`
+   *
+   * ### Example
+   *
+   * ```ts
+   * const ebcdic = EBCDIC_CCSID_37("HELLO WORLD").as();
+   * ```
    */
   as(): EBCDIC_CCSID_37;
   /**
    * Encode ASCII to EBCDIC (CCSID 37)
+   *
+   * ### Example
+   *
+   * ```ts
+   * const bin = EBCDIC_CCSID_37("HELLO WORLD").encode();
+   * ```
    */
   encode(): Uint8Array;
 }
@@ -111,20 +123,43 @@ export type EBCDIC_CCSID_37_FUNCTION = (
 export interface EBCDIC_CCSID_37_STATIC {
   /**
    * Convert ASCII to EBCDIC Code (CCSID 37)
+   *
+   * ### Example
+   *
+   * ```ts
+   * const code = EBCDIC_CCSID_37.charCodeAt("A");
+   * ```
    */
   charCodeAt(c: string): number;
   /**
    * Convert EBCDIC Code (CCSID 37) to ASCII
+   *
+   * ### Example
+   *
+   * ```ts
+   * const char = EBCDIC_CCSID_37.fromCharCode(0x40);
+   * ```
    */
   fromCharCode(code: number): string;
 
   /**
    * Encode ASCII to EBCDIC (CCSID 37)
+   *
+   * ### Example
+   * ```ts
+   * const bin = EBCDIC_CCSID_37.encode("HELLO WORLD");
+   * ```
    */
   encode(str: string): Uint8Array;
 
   /**
    * Decode EBCDIC (CCSID 37) to ASCII
+   *
+   * ### Example
+   *
+   * ```ts
+   * const str = EBCDIC_CCSID_37.decode(bin);
+   * ```
    */
   decode(bytes: Uint8Array): EBCDIC_CCSID_37;
 }
