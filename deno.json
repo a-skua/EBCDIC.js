@@ -1,6 +1,6 @@
 {
   "name": "@askua/ebcdic",
-  "version": "1.0.0-rc3",
+  "version": "1.0.0",
   "exports": "./mod.ts",
   "tasks": {
     "test": "deno test && deno test --doc mod.ts",

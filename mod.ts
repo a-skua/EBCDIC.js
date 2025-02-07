@@ -146,7 +146,7 @@ export interface EBCDIC_CCSID_37_OBJECT {
    * import { assertEquals } from "@std/assert";
    *
    * const ebcdic = EBCDIC_CCSID_37("HELLO WORLD").as();
-   * assertEquals(ebcdic, "HELLO WORLD");
+   * assertEquals(ebcdic, "HELLO WORLD" as EBCDIC_CCSID_37);
    * ```
    */
   as(): EBCDIC_CCSID_37;
@@ -171,11 +171,11 @@ export interface EBCDIC_CCSID_37_OBJECT {
    * ```ts
    * import { assertEquals } from "@std/assert";
    *
-   * const validObj = EBCDIC_CCSID_37("HELLO WORLD");
-   * assertEquals(validObj.valid(), true);
+   * const valid = EBCDIC_CCSID_37("HELLO WORLD");
+   * assertEquals(valid.valid(), true);
    *
-   * const invalidObj = EBCDIC_CCSID_37("あ");
-   * assertEquals(invalidObj.valid(), false);
+   * const invalid = EBCDIC_CCSID_37("あ");
+   * assertEquals(invalid.valid(), false);
    */
   valid(): boolean;
 }
@@ -230,13 +230,34 @@ export interface EBCDIC_CCSID_37_STATIC {
    * import { assertEquals } from "@std/assert";
    *
    * const str = EBCDIC_CCSID_37.decode(Uint8Array.from([0xc8, 0xc5, 0xd3, 0xd3, 0xd6, 0x40, 0xe6, 0xd6, 0xd9, 0xd3, 0xc4]));
-   * assertEquals(str, "HELLO WORLD");
+   * assertEquals(str, "HELLO WORLD" as EBCDIC_CCSID_37);
    * ```
    */
   decode(bytes: Uint8Array): EBCDIC_CCSID_37;
 
   /**
    * Validate EBCDIC (CCSID 37) string
+   *
+   * ### Example
+   *
+   * ```ts
+   * import { assertEquals } from "@std/assert";
+   *
+   * const valid = EBCDIC_CCSID_37.valid("HELLO WORLD");
+   * assertEquals(valid, true);
+   *
+   * const invalid = EBCDIC_CCSID_37.valid("あ");
+   * assertEquals(invalid, false);
+   *
+   * // Type Guard
+   * const unchecked = [
+   *   "HELLO",
+   *   "あ",
+   *   "WORLD",
+   * ];
+   * const checked = unchecked.filter(EBCDIC_CCSID_37.valid);
+   * assertEquals(checked, ["HELLO", "WORLD"] as EBCDIC_CCSID_37[]);
+   * ```
    */
   valid(str: string): str is EBCDIC_CCSID_37;
 }
