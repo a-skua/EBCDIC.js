@@ -23,84 +23,130 @@
  * F|  |  |  |  |  |  |? |" |  |  |  |  |  |  |  |
  */
 const _EBCDIC_CCSID_37 = [
-  { c: " ", b: 0x40 },
-  { c: ".", b: 0x4b },
-  { c: "<", b: 0x4c },
-  { c: "(", b: 0x4d },
-  { c: "+", b: 0x4e },
-  { c: "&", b: 0x50 },
-  { c: "*", b: 0x5c },
-  { c: ")", b: 0x5d },
-  { c: ";", b: 0x5e },
-  { c: "-", b: 0x60 },
-  { c: "/", b: 0x61 },
-  { c: ",", b: 0x6b },
-  { c: "%", b: 0x6c },
-  { c: "_", b: 0x6d },
-  { c: ">", b: 0x6e },
-  { c: "?", b: 0x6f },
-  { c: ":", b: 0x7a },
-  { c: "#", b: 0x7b },
-  { c: "@", b: 0x7c },
-  { c: "'", b: 0x7d },
-  { c: "=", b: 0x7e },
-  { c: '"', b: 0x7f },
-  { c: "A", b: 0xc1 },
-  { c: "B", b: 0xc2 },
-  { c: "C", b: 0xc3 },
-  { c: "D", b: 0xc4 },
-  { c: "E", b: 0xc5 },
-  { c: "F", b: 0xc6 },
-  { c: "G", b: 0xc7 },
-  { c: "H", b: 0xc8 },
-  { c: "I", b: 0xc9 },
-  { c: "J", b: 0xd1 },
-  { c: "K", b: 0xd2 },
-  { c: "L", b: 0xd3 },
-  { c: "M", b: 0xd4 },
-  { c: "N", b: 0xd5 },
-  { c: "O", b: 0xd6 },
-  { c: "P", b: 0xd7 },
-  { c: "Q", b: 0xd8 },
-  { c: "R", b: 0xd9 },
-  { c: "S", b: 0xe2 },
-  { c: "T", b: 0xe3 },
-  { c: "U", b: 0xe4 },
-  { c: "V", b: 0xe5 },
-  { c: "W", b: 0xe6 },
-  { c: "X", b: 0xe7 },
-  { c: "Y", b: 0xe8 },
-  { c: "Z", b: 0xe9 },
-  { c: "0", b: 0xf0 },
-  { c: "1", b: 0xf1 },
-  { c: "2", b: 0xf2 },
-  { c: "3", b: 0xf3 },
-  { c: "4", b: 0xf4 },
-  { c: "5", b: 0xf5 },
-  { c: "6", b: 0xf6 },
-  { c: "7", b: 0xf7 },
-  { c: "8", b: 0xf8 },
-  { c: "9", b: 0xf9 },
+  [" ", 0x40],
+  [".", 0x4b],
+  ["<", 0x4c],
+  ["(", 0x4d],
+  ["+", 0x4e],
+  ["&", 0x50],
+  ["*", 0x5c],
+  [")", 0x5d],
+  [";", 0x5e],
+  ["-", 0x60],
+  ["/", 0x61],
+  [",", 0x6b],
+  ["%", 0x6c],
+  ["_", 0x6d],
+  [">", 0x6e],
+  ["?", 0x6f],
+  [":", 0x7a],
+  ["#", 0x7b],
+  ["@", 0x7c],
+  ["'", 0x7d],
+  ["=", 0x7e],
+  ['"', 0x7f],
+  ["A", 0xc1],
+  ["B", 0xc2],
+  ["C", 0xc3],
+  ["D", 0xc4],
+  ["E", 0xc5],
+  ["F", 0xc6],
+  ["G", 0xc7],
+  ["H", 0xc8],
+  ["I", 0xc9],
+  ["J", 0xd1],
+  ["K", 0xd2],
+  ["L", 0xd3],
+  ["M", 0xd4],
+  ["N", 0xd5],
+  ["O", 0xd6],
+  ["P", 0xd7],
+  ["Q", 0xd8],
+  ["R", 0xd9],
+  ["S", 0xe2],
+  ["T", 0xe3],
+  ["U", 0xe4],
+  ["V", 0xe5],
+  ["W", 0xe6],
+  ["X", 0xe7],
+  ["Y", 0xe8],
+  ["Z", 0xe9],
+  ["0", 0xf0],
+  ["1", 0xf1],
+  ["2", 0xf2],
+  ["3", 0xf3],
+  ["4", 0xf4],
+  ["5", 0xf5],
+  ["6", 0xf6],
+  ["7", 0xf7],
+  ["8", 0xf8],
+  ["9", 0xf9],
 ] as const;
 
-type EBCDIC_CCSID_37_CHAR = typeof _EBCDIC_CCSID_37[number]["c"];
-type EBCDIC_CCSID_37_BYTE = typeof _EBCDIC_CCSID_37[number]["b"];
+const _ebcdic_ccsid_37 = Symbol("ebcdic_ccsid_37");
 
-const c2b37 = new Map<EBCDIC_CCSID_37_CHAR, EBCDIC_CCSID_37_BYTE>(
-  _EBCDIC_CCSID_37.map(({ c, b }) => [c, b]),
-);
-const b2c37 = new Map<EBCDIC_CCSID_37_BYTE, EBCDIC_CCSID_37_CHAR>(
-  _EBCDIC_CCSID_37.map(({ c, b }) => [b, c]),
-);
+const c2b37 = Object.fromEntries(_EBCDIC_CCSID_37) as {
+  [T in typeof _EBCDIC_CCSID_37[number] as T[0]]: T[1];
+};
 
-export interface EBCDIC_CCSID_37_FUNCTION_RETURN {
+const b2c37 = Object.fromEntries(_EBCDIC_CCSID_37.map(([c, b]) => [b, c])) as {
+  [T in typeof _EBCDIC_CCSID_37[number] as T[1]]: T[0];
+};
+
+/**
+ * # Example
+ *
+ * ```ts
+ * // OK
+ * const c1: EBCDIC_CCSID_37_CHAR = "A";
+ *
+ * // NG: Undefined code
+ * // const c2: EBCDIC_CCSID_37_CHAR = "あ";
+ * ```
+ */
+export type EBCDIC_CCSID_37_CHAR = typeof _EBCDIC_CCSID_37[number][0];
+
+/**
+ * # Example
+ *
+ * ```ts
+ * // OK
+ * const c1: EBCDIC_CCSID_37_CODE = 0xc1;
+ *
+ * // NG: Undefined code
+ * // const c2: EBCDIC_CCSID_37_CODE = 0x00;
+ * ```
+ */
+export type EBCDIC_CCSID_37_CODE = typeof _EBCDIC_CCSID_37[number][1];
+
+/**
+ * # Example
+ *
+ * ```ts
+ * import { assertEquals } from "@std/assert";
+ *
+ * const bin = EBCDIC_CCSID_37.encode("HELLO WORLD");
+ * assertEquals(bin, Uint8Array.from([0xc8, 0xc5, 0xd3, 0xd3, 0xd6, 0x40, 0xe6, 0xd6, 0xd9, 0xd3, 0xc4]));
+ *
+ * const str = EBCDIC_CCSID_37.decode(bin);
+ * assertEquals(str, "HELLO WORLD" as EBCDIC_CCSID_37);
+ * ```
+ */
+export type EBCDIC_CCSID_37 = string & {
+  [_ebcdic_ccsid_37]: never;
+};
+
+export interface EBCDIC_CCSID_37_OBJECT {
   /**
    * Alias of `as EBCDIC_CCSID_37`
    *
    * ### Example
    *
    * ```ts
+   * import { assertEquals } from "@std/assert";
+   *
    * const ebcdic = EBCDIC_CCSID_37("HELLO WORLD").as();
+   * assertEquals(ebcdic, "HELLO WORLD");
    * ```
    */
   as(): EBCDIC_CCSID_37;
@@ -110,15 +156,29 @@ export interface EBCDIC_CCSID_37_FUNCTION_RETURN {
    * ### Example
    *
    * ```ts
+   * import { assertEquals } from "@std/assert";
+   *
    * const bin = EBCDIC_CCSID_37("HELLO WORLD").encode();
+   * assertEquals(bin, Uint8Array.from([0xc8, 0xc5, 0xd3, 0xd3, 0xd6, 0x40, 0xe6, 0xd6, 0xd9, 0xd3, 0xc4]));
    * ```
    */
   encode(): Uint8Array;
+  /**
+   * Validate EBCDIC (CCSID 37) string
+   *
+   * ### Example
+   *
+   * ```ts
+   * import { assertEquals } from "@std/assert";
+   *
+   * const validObj = EBCDIC_CCSID_37("HELLO WORLD");
+   * assertEquals(validObj.valid(), true);
+   *
+   * const invalidObj = EBCDIC_CCSID_37("あ");
+   * assertEquals(invalidObj.valid(), false);
+   */
+  valid(): boolean;
 }
-
-export type EBCDIC_CCSID_37_FUNCTION = (
-  str: string,
-) => EBCDIC_CCSID_37_FUNCTION_RETURN;
 
 export interface EBCDIC_CCSID_37_STATIC {
   /**
@@ -127,27 +187,36 @@ export interface EBCDIC_CCSID_37_STATIC {
    * ### Example
    *
    * ```ts
+   * import { assertEquals } from "@std/assert";
+   *
    * const code = EBCDIC_CCSID_37.charCodeAt("A");
+   * assertEquals(code, 0xc1);
    * ```
    */
-  charCodeAt(c: string): number;
+  charCodeAt(c: EBCDIC_CCSID_37_CHAR): EBCDIC_CCSID_37_CODE;
   /**
    * Convert EBCDIC Code (CCSID 37) to ASCII
    *
    * ### Example
    *
    * ```ts
-   * const char = EBCDIC_CCSID_37.fromCharCode(0x40);
+   * import { assertEquals } from "@std/assert";
+   *
+   * const char = EBCDIC_CCSID_37.fromCharCode(0xc1);
+   * assertEquals(char, "A");
    * ```
    */
-  fromCharCode(code: number): string;
+  fromCharCode(code: EBCDIC_CCSID_37_CODE): EBCDIC_CCSID_37_CHAR;
 
   /**
    * Encode ASCII to EBCDIC (CCSID 37)
    *
    * ### Example
    * ```ts
+   * import { assertEquals } from "@std/assert";
+   *
    * const bin = EBCDIC_CCSID_37.encode("HELLO WORLD");
+   * assertEquals(bin, Uint8Array.from([0xc8, 0xc5, 0xd3, 0xd3, 0xd6, 0x40, 0xe6, 0xd6, 0xd9, 0xd3, 0xc4]));
    * ```
    */
   encode(str: string): Uint8Array;
@@ -158,29 +227,78 @@ export interface EBCDIC_CCSID_37_STATIC {
    * ### Example
    *
    * ```ts
-   * const str = EBCDIC_CCSID_37.decode(bin);
+   * import { assertEquals } from "@std/assert";
+   *
+   * const str = EBCDIC_CCSID_37.decode(Uint8Array.from([0xc8, 0xc5, 0xd3, 0xd3, 0xd6, 0x40, 0xe6, 0xd6, 0xd9, 0xd3, 0xc4]));
+   * assertEquals(str, "HELLO WORLD");
    * ```
    */
   decode(bytes: Uint8Array): EBCDIC_CCSID_37;
+
+  /**
+   * Validate EBCDIC (CCSID 37) string
+   */
+  valid(str: string): str is EBCDIC_CCSID_37;
 }
 
-export type EBCDIC_CCSID_37_OBJECT =
-  & EBCDIC_CCSID_37_FUNCTION
-  & EBCDIC_CCSID_37_STATIC;
-
-export type EBCDIC_CCSID_37 = string & { __ebcdic_ccsid_37: never };
-export const EBCDIC_CCSID_37: EBCDIC_CCSID_37_OBJECT = Object.assign(
-  (s: string) => ({
-    as: () => s as EBCDIC_CCSID_37,
-    encode: () => Uint8Array.from(s, EBCDIC_CCSID_37.charCodeAt),
-  }),
-  {
-    charCodeAt: (c: string) => c2b37.get(c as EBCDIC_CCSID_37_CHAR) ?? 0x40,
-    fromCharCode: (b: number) => b2c37.get(b as EBCDIC_CCSID_37_BYTE) ?? " ",
-    encode: (s: string) => EBCDIC_CCSID_37(s).encode(),
-    decode: (b: Uint8Array) =>
-      EBCDIC_CCSID_37(
-        Array.from(b, EBCDIC_CCSID_37.fromCharCode).join(""),
-      ).as(),
-  },
-);
+/**
+ * # Example
+ *
+ * ```ts
+ * import { assertEquals } from "@std/assert";
+ *
+ * const obj = EBCDIC_CCSID_37("HELLO WORLD");
+ *
+ * const str: EBCDIC_CCSID_37 = obj.as();
+ * assertEquals(str, "HELLO WORLD" as EBCDIC_CCSID_37);
+ *
+ * const bin = obj.encode();
+ * assertEquals(bin, Uint8Array.from([0xc8, 0xc5, 0xd3, 0xd3, 0xd6, 0x40, 0xe6, 0xd6, 0xd9, 0xd3, 0xc4]));
+ *
+ * const decoded = EBCDIC_CCSID_37.decode(bin);
+ * assertEquals(decoded, "HELLO WORLD" as EBCDIC_CCSID_37);
+ * ```
+ */
+export const EBCDIC_CCSID_37:
+  & ((str: string) => EBCDIC_CCSID_37_OBJECT)
+  & EBCDIC_CCSID_37_STATIC = Object.assign(
+    (s: string) => ({
+      as() {
+        return s as EBCDIC_CCSID_37;
+      },
+      encode() {
+        return Uint8Array.from(
+          s,
+          (c) => EBCDIC_CCSID_37.charCodeAt(c as EBCDIC_CCSID_37_CHAR),
+        );
+      },
+      valid() {
+        for (const c of s) {
+          if (!(c in c2b37)) return false;
+        }
+        return true;
+      },
+    }),
+    {
+      charCodeAt(c: EBCDIC_CCSID_37_CHAR) {
+        return c2b37[c];
+      },
+      fromCharCode(b: EBCDIC_CCSID_37_CODE) {
+        return b2c37[b];
+      },
+      encode(s: string) {
+        return EBCDIC_CCSID_37(s).encode();
+      },
+      decode(b: Uint8Array) {
+        return EBCDIC_CCSID_37(
+          Array.from(
+            b,
+            (c) => EBCDIC_CCSID_37.fromCharCode(c as EBCDIC_CCSID_37_CODE),
+          ).join(""),
+        ).as();
+      },
+      valid(s: string): s is EBCDIC_CCSID_37 {
+        return EBCDIC_CCSID_37(s).valid();
+      },
+    },
+  );

@@ -1,7 +1,7 @@
 import { assertEquals } from "@std/assert";
 import { EBCDIC_CCSID_37 } from "@askua/ebcdic";
 
-Deno.test("EBCDIC_CCSID_37.charCodeAt()", () => {
+Deno.test("EBCDIC_CCSID_37.charCodeAt", async (ctx) => {
   const tests = [
     [" ", 0x40],
     ["A", 0xc1],
@@ -17,15 +17,16 @@ Deno.test("EBCDIC_CCSID_37.charCodeAt()", () => {
   ] as const;
 
   for (const [c, expected] of tests) {
-    assertEquals(
-      EBCDIC_CCSID_37.charCodeAt(c),
-      expected,
-      `EBCDIC_CCSID_37.charCodeAt(${c}) -> ${expected}`,
-    );
+    await ctx.step(`EBCDIC_CCSID_37.charCodeAt(${c}) => ${expected}`, () => {
+      assertEquals(
+        EBCDIC_CCSID_37.charCodeAt(c),
+        expected,
+      );
+    });
   }
 });
 
-Deno.test("EBCDIC_CCSID_37.fromCharCode()", () => {
+Deno.test("EBCDIC_CCSID_37.fromCharCode", async (ctx) => {
   const tests = [
     [0x40, " "],
     [0xc1, "A"],
@@ -41,15 +42,16 @@ Deno.test("EBCDIC_CCSID_37.fromCharCode()", () => {
   ] as const;
 
   for (const [b, expected] of tests) {
-    assertEquals(
-      EBCDIC_CCSID_37.fromCharCode(b),
-      expected,
-      `EBCDIC_CCSID_37.fromCharCode(${b}) -> ${expected}`,
-    );
+    await ctx.step(`EBCDIC_CCSID_37.fromCharCode(${b}) => ${expected}`, () => {
+      assertEquals(
+        EBCDIC_CCSID_37.fromCharCode(b),
+        expected,
+      );
+    });
   }
 });
 
-Deno.test("EBCDIC_CCSID_37.encode()", () => {
+Deno.test("EBCDIC_CCSID_37.encode", async (ctx) => {
   const tests = [
     [
       "HELLO WORLD",
@@ -70,15 +72,16 @@ Deno.test("EBCDIC_CCSID_37.encode()", () => {
   ] as const;
 
   for (const [s, expected] of tests) {
-    assertEquals(
-      EBCDIC_CCSID_37.encode(s),
-      expected,
-      `EBCDIC_CCSID_37.encode(${s}) -> ${expected}`,
-    );
+    await ctx.step(`EBCDIC_CCSID_37.encode(${s}) => ${expected}`, () => {
+      assertEquals(
+        EBCDIC_CCSID_37.encode(s),
+        expected,
+      );
+    });
   }
 });
 
-Deno.test("EBCDIC_CCSID_37.decode()", () => {
+Deno.test("EBCDIC_CCSID_37.decode", async (ctx) => {
   const tests = [
     [
       Uint8Array.from([
@@ -99,10 +102,28 @@ Deno.test("EBCDIC_CCSID_37.decode()", () => {
   ] as const;
 
   for (const [bytes, expected] of tests) {
-    assertEquals(
-      EBCDIC_CCSID_37.decode(bytes),
-      expected as EBCDIC_CCSID_37,
-      `EBCDIC_CCSID_37.decode(${bytes}) -> ${expected}`,
-    );
+    await ctx.step(`EBCDIC_CCSID_37.decode(${bytes}) => ${expected}`, () => {
+      assertEquals(
+        EBCDIC_CCSID_37.decode(bytes),
+        expected as EBCDIC_CCSID_37,
+      );
+    });
+  }
+});
+
+Deno.test("EBCDIC_CCSID_37.valid", async (ctx) => {
+  const tests = [
+    ["HELLO WORLD", true],
+    ["HELLO\x00WORLD", false],
+    ["あ", false],
+  ] as const;
+
+  for (const [s, expected] of tests) {
+    await ctx.step(`EBCDIC_CCSID_37.valid(${s}) => ${expected}`, () => {
+      assertEquals(
+        EBCDIC_CCSID_37.valid(s),
+        expected,
+      );
+    });
   }
 });
