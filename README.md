@@ -29,7 +29,7 @@ $ deno bench
     CPU | Apple M2
 Runtime | Deno 2.1.9 (aarch64-apple-darwin)
 
-/a-skua/EBCDIC.js/mod_bench.ts
+file:///EBCDIC.js/mod_bench.ts
 
 benchmark                time/iter (avg)        iter/s      (min … max)           p75      p99     p995
 ------------------------ ----------------------------- --------------------- --------------------------
