@@ -1,9 +1,15 @@
 {
   "name": "@askua/ebcdic",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "exports": "./mod.ts",
+  "publish": {
+    "exclude": [
+      ".github"
+    ]
+  },
   "tasks": {
-    "tests": "deno test && deno test --doc mod.ts && deno bench",
+    "version": "jq -r '.version' < deno.json",
+    "tests": "deno test && deno test --doc mod.ts",
     "bench": "deno bench | sed s:$(dirname $(pwd))::",
     "check": "deno fmt && deno lint && deno check . && deno task tests && deno publish --dry-run"
   },
